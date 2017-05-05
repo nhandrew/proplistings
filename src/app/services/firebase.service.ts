@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Listing } from '../models/listing';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class FirebaseService {
 
   listings: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFireDatabase) { }
+   constructor(db: AngularFireDatabase) {
+    this.listings = db.list('/listings');
+  }
 
   getListings(){
-    this.listings=this.af.list('/listings') as FirebaseListObservable<Listing[]>
     return this.listings;
   }
 

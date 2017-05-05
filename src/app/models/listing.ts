@@ -1,4 +1,4 @@
-export class Listing{
+export interface Listing{
   $key?:string;
   title?:string;
   type?:string;
