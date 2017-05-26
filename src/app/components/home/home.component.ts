@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af:AngularFireAuth, public flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
+  }
+
+  login(){
+    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider);
   }
 
 }

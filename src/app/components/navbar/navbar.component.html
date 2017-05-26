@@ -16,8 +16,8 @@
             <li><a routerLink="/add-listing">Add Listing</a></li>
           </ul>
            <ul class="nav navbar-nav navbar-right">
-            <li><button (click)="login()">Login</button></li>
-            <li><button (click)="logout()">Logout</button></li>
+            <li *ngIf="!(authStatus)" ><a (click)="login()">Login</a></li>
+            <li *ngIf="(authStatus)"><a (click)="logout()">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
